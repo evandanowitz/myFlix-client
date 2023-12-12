@@ -27455,14 +27455,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
         lineNumber: 4,
         columnNumber: 5
     }, undefined);
-}; // export const MovieCard = (props) => { // Creates a MovieCard component. Must import into MainView to use it there
- //   return <div>{props.movie.title}</div>;
- // };
- // Destrctured version with props
- // export const MovieCard = (props) => { // Creates a MovieCard component. Must import into MainView to use it there
- //   const { movie } = props;
- //   return <div>{movie.title}</div>;
- // };
+};
 _c = MovieCard;
 var _c;
 $RefreshReg$(_c, "MovieCard");
