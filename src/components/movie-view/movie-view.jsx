@@ -27,6 +27,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>{movie.featured}</span>
       </div>
 
+      <button onClick={onBackClick}>Back</button>
 
       <div>
         <img src={movie.image} />
