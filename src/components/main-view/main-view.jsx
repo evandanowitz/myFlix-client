@@ -1,3 +1,4 @@
+import React from "react";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([
