@@ -2960,7 +2960,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApp, {}, void 0, fals
     fileName: "src/index.jsx",
     lineNumber: 11,
     columnNumber: 13
-}, undefined));
+}, undefined)); // Tells React to render your app in the root DOM element
 var _c;
 $RefreshReg$(_c, "MyFlixApp");
 
@@ -27425,7 +27425,15 @@ const MovieCard = ({ movie, onMovieClick })=>{
         lineNumber: 4,
         columnNumber: 5
     }, undefined);
-};
+}; // Creates a MovieCard component. Must import into MainView to use it there
+ // export const MovieCard = (props) => {
+ //   return <div>{props.movie.title}</div>;
+ // };
+ // Destrctured version with props. // Creates a MovieCard component. Must import into MainView to use it there
+ // export const MovieCard = (props) => {
+ //   const { movie } = props; 
+ //   return <div>{movie.title}</div>;
+ // };
 _c = MovieCard;
 var _c;
 $RefreshReg$(_c, "MovieCard");

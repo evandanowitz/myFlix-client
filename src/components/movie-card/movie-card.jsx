@@ -13,3 +13,14 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     </div>
   );
 };
+
+// Creates a MovieCard component. Must import into MainView to use it there
+  // export const MovieCard = (props) => {
+  //   return <div>{props.movie.title}</div>;
+  // };
+ 
+// Destrctured version with props. // Creates a MovieCard component. Must import into MainView to use it there
+  // export const MovieCard = (props) => {
+  //   const { movie } = props; 
+  //   return <div>{movie.title}</div>;
+  // };
