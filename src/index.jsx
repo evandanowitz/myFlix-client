@@ -21,5 +21,9 @@ const MyFlixApp = () => {
 const container = document.querySelector("#root");
 // Creating a root for the React app using the createRoot function
 const root = createRoot(container);
+<<<<<<< Updated upstream
 // Rendering the MyFlixApp component within the specified container
 root.render(<MyFlixApp />);
+=======
+root.render(<MyFlixApp />); // Tells React to render your app in the root DOM element
+>>>>>>> Stashed changes
