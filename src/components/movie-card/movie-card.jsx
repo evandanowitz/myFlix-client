@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 // Destrctured version
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
