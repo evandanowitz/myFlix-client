@@ -10,7 +10,7 @@ export const MainView = () => {
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("movie data", data);
         const moviesFromApi = data.map((movie) => {
           return {
             _id: movie._id,
