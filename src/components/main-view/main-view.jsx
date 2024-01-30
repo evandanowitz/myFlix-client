@@ -40,12 +40,20 @@ export const MainView = () => {
 
   if (selectedMovie) {
     return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      <div>
+        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 68</button>
+      </div>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <div>
+        <div>The list is empty!</div>
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 77</button>
+      </div>
+    );
   } else {
   
   return (
@@ -59,6 +67,7 @@ export const MainView = () => {
           }}
         />
       ))}
+      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 93</button>
     </div>
   );
 }};
