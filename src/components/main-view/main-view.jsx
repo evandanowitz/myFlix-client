@@ -18,7 +18,8 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
+    // https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies
+    fetch("http://localhost:1234/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
