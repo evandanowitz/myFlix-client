@@ -14,10 +14,17 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("movie data", data);
+
         const moviesFromApi = data.map((movie) => {
           return {
             _id: movie._id,
@@ -39,7 +46,7 @@ export const MainView = () => {
         });
         setMovies(moviesFromApi);
       });
-  }, []);
+  }, [token]);
 
   if (!user) {
     return (
