@@ -16,13 +16,12 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    // https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users
-    fetch("http://localhost:1234/users", {
+    fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");

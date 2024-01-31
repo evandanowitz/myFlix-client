@@ -18,8 +18,7 @@ export const MainView = () => {
       return;
     }
 
-    // https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies
-    fetch("http://localhost:1234/movies", {
+    fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -65,8 +64,8 @@ export const MainView = () => {
   if (selectedMovie) {
     return (
       <div>
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
         <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 68</button>
       </div>
     );
   }
@@ -75,13 +74,14 @@ export const MainView = () => {
     return (
       <div>
         <div>The list is empty!</div>
-        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 77</button>
+        <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
       </div>
     );
   } else {
   
   return (
     <div>
+      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
       {movies.map((movie) => (
         <MovieCard 
           key={movie._id} 
@@ -91,7 +91,6 @@ export const MainView = () => {
           }}
         />
       ))}
-      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout 93</button>
     </div>
   );
 }};
