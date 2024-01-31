@@ -9,8 +9,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault(); // this prevents the default behavior of the form which is to reload the entire page
 
     const data = {
-      access: username,
-      secret: password
+      Username: username,
+      Password: password
     };
 
     // https://myflix-db-movie-app-af5513e7733f.herokuapp.com/login
