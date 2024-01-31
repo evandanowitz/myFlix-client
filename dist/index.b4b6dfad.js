@@ -2790,7 +2790,7 @@ var process = require("a79669782b7ef5cf");
     ]);
 });
 
-},{"a79669782b7ef5cf":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"a79669782b7ef5cf":"jU1nx"}],"jU1nx":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
