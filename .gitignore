@@ -2,6 +2,7 @@ node_modules
 .cache
 .parcel-cache
 /dist
+dist
 dist/index.html
 dist/index.html
 dist/index.html
