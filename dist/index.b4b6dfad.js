@@ -27365,62 +27365,7 @@ const MainView = ()=>{
             columnNumber: 7
         }, undefined)
     }, void 0, false);
-}; //   return (
- //     <>
- //       <Row className="justify-content-md-center">
- //         {!user ? (
- //           <Col md={3}>
- //             <LoginView onLoggedIn={(user, token) => {
- //               setUser(user);
- //               setToken(token);
- //             }} />
- //             or
- //             <SignupView />
- //           </Col>
- //         ) : selectedMovie ? (
- //           <>
- //             <Row>
- //               <Col>
- //                 <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); } }>Logout</Button>
- //               </Col>
- //             </Row>
- //             <Row>
- //               <Col md={4} style={{border: "2px solid black"}}>
- //                 <MovieView
- //                   style={{border: "2px solid lightblue"}}
- //                   movie={selectedMovie}
- //                   onBackClick={() => setSelectedMovie(null)} 
- //                 />
- //               </Col>
- //             </Row>
- //           </>
- //         ) : movies.length === 0 ? (
- //           <div>The list is empty!</div>
- //         ) : (
- //           <>
- //             <Row>
- //               <Col>
- //                 <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); } }>Logout</Button>
- //               </Col>
- //             </Row>
- //             <Row>
- //               {movies.map((movie) => (
- //                 <Col className="mb-4" key={movie.id} md={4} style={{border: "2px solid lightblue"}}>
- //                   <MovieCard
- //                     movie={movie}
- //                     onMovieClick={(newSelectedMovie) => {
- //                       setSelectedMovie(newSelectedMovie);
- //                     } } 
- //                   />
- //                 </Col>
- //               ))}
- //             </Row>
- //           </>
- //         )}
- //       </Row>
- //     </>
- //   );
- // };
+};
 _s(MainView, "skShail9kO25ilQX788tJ78Yq3c=");
 _c = MainView;
 var _c;
