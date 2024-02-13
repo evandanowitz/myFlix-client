@@ -1,41 +1,41 @@
 import PropTypes from "prop-types";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import "./movie-view.scss";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
-
-      <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
-      </div>
-
-      <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
-      </div>
-
-      <div>
-        <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
-      </div>
-
-      <div>
-        <span>Director: </span>
-        <span>{movie.Director.Name}</span>
-      </div>
-
-      <div>
-        <span>Featured: </span>
-        <span>{movie.Featured ? "Yes" : "No"}</span>
-      </div>
-
-      <button onClick={onBackClick}>Back</button>
-
-      <div>
-        <img src={movie.ImagePath} />
-      </div>
-
-    </div>
+    <>
+      <Row className="my-3 justify-content-md-center">
+          <Col md={12}>
+            <img src={movie.ImagePath} className="w-100" />
+          </Col>
+          <Col md={12} className="col-12">
+            <div className="my-1">
+              <span className="h3">Title: </span>
+              <span className="h3">{movie.Title}</span>
+            </div>
+            <div className="my-1">
+              <span className="h6">Description: </span>
+              <span>{movie.Description}</span>
+            </div>
+            <div className="my-1">
+              <span className="h6">Genre: </span>
+              <span>{movie.Genre.Name}</span>
+            </div>
+            <div className="my-1">
+              <span className="h6">Director: </span>
+              <span>{movie.Director.Name}</span>
+            </div>
+            <div className="my-1">
+              <span className="h6">Featured: </span>
+              <span>{movie.Featured ? "Yes" : "No"}</span>
+            </div>
+            <button onClick={onBackClick} className="back-button my-1" style={{ cursor: "pointer" }}>Back</button>
+          </Col>
+      </Row>
+    </>
   );
 };
 
