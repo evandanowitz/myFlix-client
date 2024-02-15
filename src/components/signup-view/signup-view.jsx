@@ -22,14 +22,21 @@ export const SignupView = () => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
-      },
+      }
     }).then((response) => {
+      console.log(data)
       if (response.ok) {
         alert("Signup successful");
         window.location.reload();
+      } else if (password === "") {
+        alert("You must enter a password.");
+      } else if (email.includes("@") === false) {
+        alert("Please enter a valid email address.")
       } else {
         alert("Signup failed");
       }
+    }).catch(error => {
+      console.error("Error: ", error);
     });
   };
 
