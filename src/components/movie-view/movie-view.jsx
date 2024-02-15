@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
 import { Row, Col, Button } from "react-bootstrap";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+ 
+  const { movieId } = useParams();
+  const movie = movies.find((movie) => movie._id === movieId);
+
+  // const user = JSON.parse(localStorage.getItem("user")); // Need this ???
+
   return (
     <>
       <Row className="my-3 justify-content-md-center">
@@ -30,7 +38,9 @@ export const MovieView = ({ movie, onBackClick }) => {
               <span className="h6">Featured: </span>
               <span>{movie.Featured ? "Yes" : "No"}</span>
             </div>
-            <button onClick={onBackClick} className="back-button my-1" style={{ cursor: "pointer" }}>Back</button>
+            <Link to={`/`}>
+              <Button className="my-1" style={{ cursor: "pointer" }}>Back</Button>
+            </Link>
           </Col>
       </Row>
     </>
@@ -54,6 +64,5 @@ MovieView.propTypes = {
     },
     ImagePath: PropTypes.string,
     Featured: PropTypes.boolean
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  }).isRequired
 };
