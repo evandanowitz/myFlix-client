@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
+import { Row, Col, Button } from "react-bootstrap";
 import "./movie-view.scss";
 
 export const MovieView = ({ movie, onBackClick }) => {
