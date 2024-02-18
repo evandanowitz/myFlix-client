@@ -31,16 +31,28 @@ export const ProfileView = () => {
   }, [token]);
 
   return (
-    <div>
-      <h1>This is the ProfileView</h1>
-      <h4>Display user information</h4>
-      <div>
-        <p>Username:</p>
-        <p>Password:</p>
-        <p>Email:</p>
-        <p>Birthday:</p>
-        <p>Favorite Movies:</p>
-      </div>
-    </div>
-  )
+    <Container>
+      <Card>
+        <Card.Body>
+          <Card.Title>User Information</Card.Title>
+          {userData && (
+            <div>
+              <p>Username: {userData.Username}</p>
+              <p>Password: {userData.Password}</p>
+              <p>Email: {userData.Email}</p>
+              <p>Birthday: {userData.Birthday}</p>
+            </div>
+          )}
+        </Card.Body>
+      </Card>
+    </Container>
+  );
 };
+
+
+
+
+// FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
+  //   };
+  // setMovies(moviesFromApi);
+  // });
