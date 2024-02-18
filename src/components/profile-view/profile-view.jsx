@@ -15,6 +15,10 @@ export const ProfileView = () => {
   const [updatedEmail, setUpdatedEmail] = useState("");
   const [updatedBirthday, setUpdatedBirthday] = useState("");
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     if (!token) {
       return;
