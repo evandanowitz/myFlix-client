@@ -8,7 +8,6 @@ export const ProfileView = () => {
 
   const token = localStorage.getItem("token");
   const Username = "ajbrown";
-  console.log(token);
 
   useEffect(() => {
     if (!token) {
@@ -20,10 +19,6 @@ export const ProfileView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.Username);
-        console.log(data.Password);
-        console.log(data.Email);
-        console.log(data.Birthday);
           return { 
           // Need to change return statement. Look in console for whatever needs to go on right side of colon.
           // Left side is what you want to call it. Right side is what it actually is. Here, it'll be data."something"
