@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -59,7 +60,8 @@ export const MainView = () => {
       />
       <Row className="justify-content-md-center my-5">
         <Routes>
-          {/* Return SignupView if not logged in, otherwise, return main page */}
+
+          {/* If no user, return SignupView. If user is logged in, return main page */}
           <Route 
             path="/signup"
             element={
@@ -74,7 +76,8 @@ export const MainView = () => {
               </>
             }
           />
-          {/* Return LoginView if not logged in, otherwise, return main page */}
+
+          {/* If no user, return LoginView. If user is logged in, return main page */}
           <Route
             path="/login"
             element={
@@ -94,7 +97,8 @@ export const MainView = () => {
               </>
             }
           />
-          {/* Return MovieView if logged in, otherwise, return LoginView */}
+
+          {/* If no user, return LoginView. If user is logged in, return MovieView */}
           <Route
             path="movies/:movieId"
             element={
@@ -113,7 +117,26 @@ export const MainView = () => {
               </>
             }
           />
-          {/* Return MovieCard if logged in, otherwise, return LoginView */}
+
+          {/* If no user, return LoginView. If user is logged in, return ProfileView */}
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <ProfileView
+                      // token={storedToken}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
+          {/* If no user, return LoginView. If user is logged in, return MovieCard */}
           <Route 
             path="/"
             element={
