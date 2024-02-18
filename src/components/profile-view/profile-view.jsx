@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Button, Form, Card } from "react-bootstrap";
-import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 
 export const ProfileView = () => {
 
@@ -10,6 +9,11 @@ export const ProfileView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [userData, setUserData] = useState(null);
   const Username = user ? user.Username : null;
+
+  const [updatedUsername, setUpdatedUsername] = useState("");
+  const [updatedPassword, setUpdatedPassword] = useState("");
+  const [updatedEmail, setUpdatedEmail] = useState("");
+  const [updatedBirthday, setUpdatedBirthday] = useState("");
 
   useEffect(() => {
     if (!token) {
