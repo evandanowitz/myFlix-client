@@ -128,7 +128,7 @@ export const MainView = () => {
                 ) : (
                   <Col md={8}>
                     <ProfileView
-                      // token={storedToken}
+                      user={user}
                     />
                   </Col>
                 )}
