@@ -53,6 +53,52 @@ export const ProfileView = () => {
           )}
         </Card.Body>
       </Card>
+
+      <Card>
+        <Form>
+          <Form.Group controlId="updatedUsername">
+            <Form.Label>New Username:</Form.Label>
+              <Form.Control
+                type="text"
+                value={updatedUsername}
+                onChange={(e) => setUpdatedUsername(e.target.value)}
+                required
+                minLength="6"
+              />
+          </Form.Group>
+          <Form.Group controlId="updatedPassword">
+            <Form.Label>New Password:</Form.Label>
+              <Form.Control
+                type="password"
+                value={updatedPassword}
+                onChange={(e) => setUpdatedPassword(e.target.value)}
+                required
+                minLength="6"
+              />
+          </Form.Group>
+          <Form.Group controlId="updatedEmail">
+            <Form.Label>New Email:</Form.Label>
+              <Form.Control
+                type="email"
+                value={updatedEmail}
+                onChange={(e) => setUpdatedEmail(e.target.value)}
+                required
+              />
+          </Form.Group>
+          <Form.Group controlId="updatedBirthday">
+            <Form.Label>New Birthday:</Form.Label>
+              <Form.Control
+                type="date"
+                value={updatedBirthday}
+                onChange={(e) => setUpdatedBirthday(e.target.value)}
+                required
+              />
+          </Form.Group>
+          <Button type="submit" onClick={handleSubmit} variant="top">
+            Update Info
+          </Button>
+        </Form>
+      </Card>
     </Container>
   );
 };
