@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Button, Form, Card } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 
