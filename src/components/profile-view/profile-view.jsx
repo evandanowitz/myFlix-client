@@ -6,7 +6,10 @@ import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 export const ProfileView = () => {
 
   const token = localStorage.getItem("token");
-  const Username = "ajbrown";
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [userData, setUserData] = useState(null);
+  const Username = user ? user.Username : null;
 
   useEffect(() => {
     if (!token) {
