@@ -45,10 +45,10 @@ export const ProfileView = () => {
           <Card.Title>User Information</Card.Title>
           {userData && (
             <div>
-              <p>Username: {userData.Username}</p>
-              <p>Password: {userData.Password}</p>
-              <p>Email: {userData.Email}</p>
-              <p>Birthday: {userData.Birthday}</p>
+              <Card.Text>Username: {userData.Username}</Card.Text>
+              <Card.Text>Password: {userData.Password}</Card.Text>
+              <Card.Text>Email: {userData.Email}</Card.Text>
+              <Card.Text>Birthday: {userData.Birthday}</Card.Text>
             </div>
           )}
         </Card.Body>
