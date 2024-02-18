@@ -21,16 +21,12 @@ export const ProfileView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-          return { 
-          // Need to change return statement. Look in console for whatever needs to go on right side of colon.
-          // Left side is what you want to call it. Right side is what it actually is. Here, it'll be data."something"
-            Username: data.Username,
-            Password: data.Password,
-            Email: data.Email,
-            Birthday: data.Birthday,
-            // FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
-          };
-        setMovies(moviesFromApi);
+        setUserData({
+          Username: data.Username,
+          Password: data.Password,
+          Email: data.Email,
+          Birthday: data.Birthday
+        });
       });
   }, [token]);
 
