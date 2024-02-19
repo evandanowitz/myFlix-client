@@ -46,7 +46,6 @@ export const ProfileView = () => {
           {userData && (
             <div>
               <Card.Text>Username: {userData.Username}</Card.Text>
-              <Card.Text>Password: {userData.Password}</Card.Text>
               <Card.Text>Email: {userData.Email}</Card.Text>
               <Card.Text>Birthday: {userData.Birthday}</Card.Text>
             </div>
