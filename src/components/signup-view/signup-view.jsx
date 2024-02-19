@@ -27,7 +27,8 @@ export const SignupView = () => {
       console.log(data)
       if (response.ok) {
         alert("Signup successful");
-        window.location.reload();
+      } else if (username.length < 6) {
+        alert("Username must be 6 characters or longer.");
       } else if (password === "") {
         alert("You must enter a password.");
       } else if (email.includes("@") === false) {
