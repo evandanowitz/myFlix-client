@@ -22,6 +22,12 @@ export const ProfileView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    console.log(updatedUsername);
+    console.log(updatedPassword);
+    console.log(updatedEmail);
+    console.log(updatedBirthday);
+
   };
 
   useEffect(() => {
