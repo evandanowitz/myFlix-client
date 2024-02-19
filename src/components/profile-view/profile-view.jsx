@@ -94,7 +94,7 @@ export const ProfileView = () => {
                 required
               />
           </Form.Group>
-          <Button type="submit" onClick={handleSubmit} variant="top">
+          <Button type="submit" onClick={handleSubmit} variant="primary">
             Update Info
           </Button>
         </Form>
