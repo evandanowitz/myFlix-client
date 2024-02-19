@@ -4,16 +4,21 @@ import { Button, Form, Card } from "react-bootstrap";
 
 export const ProfileView = () => {
 
+// Variables for displaying user info
   const token = localStorage.getItem("token");
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [userData, setUserData] = useState(null);
   const Username = user ? user.Username : null;
 
+// Variables for updating user info
   const [updatedUsername, setUpdatedUsername] = useState("");
   const [updatedPassword, setUpdatedPassword] = useState("");
   const [updatedEmail, setUpdatedEmail] = useState("");
   const [updatedBirthday, setUpdatedBirthday] = useState("");
+
+// Variables for allowing a user to deregister
+  // Variables go here
 
   const handleSubmit = (event) => {
     event.preventDefault();
