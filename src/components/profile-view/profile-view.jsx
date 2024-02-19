@@ -4,27 +4,20 @@ import { Button, Form, Card } from "react-bootstrap";
 
 export const ProfileView = () => {
 
-// Variables for displaying user info
   const token = localStorage.getItem("token");
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [userData, setUserData] = useState(null);
   const Username = user ? user.Username : null;
 
-// Variables for updating user info
   const [updatedUsername, setUpdatedUsername] = useState("");
-  const [updatedPassword, setUpdatedPassword] = useState("");
   const [updatedEmail, setUpdatedEmail] = useState("");
   const [updatedBirthday, setUpdatedBirthday] = useState("");
-
-// Variables for allowing a user to deregister
-  // Variables go here
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     console.log(updatedUsername);
-    console.log(updatedPassword);
     console.log(updatedEmail);
     console.log(updatedBirthday);
 
@@ -42,7 +35,6 @@ export const ProfileView = () => {
       .then((data) => {
         setUserData({
           Username: data.Username,
-          Password: data.Password,
           Email: data.Email,
           Birthday: data.Birthday
         });
@@ -76,16 +68,6 @@ export const ProfileView = () => {
                 minLength="6"
               />
           </Form.Group>
-          <Form.Group controlId="updatedPassword">
-            <Form.Label>New Password:</Form.Label>
-              <Form.Control
-                type="password"
-                value={updatedPassword}
-                onChange={(e) => setUpdatedPassword(e.target.value)}
-                required
-                minLength="6"
-              />
-          </Form.Group>
           <Form.Group controlId="updatedEmail">
             <Form.Label>New Email:</Form.Label>
               <Form.Control
@@ -112,9 +94,6 @@ export const ProfileView = () => {
     </Container>
   );
 };
-
-
-
 
 // FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
   //   };
