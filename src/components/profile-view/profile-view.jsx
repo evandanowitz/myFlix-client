@@ -16,14 +16,20 @@ export const ProfileView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Handle submit triggered");
 
-    console.log(updatedUsername);
-    console.log(updatedEmail);
-    console.log(updatedBirthday);
+    console.log("newUsername:", newUsername);
+    console.log("newEmail:", newEmail);
+    console.log("newBirthday:", newBirthday);
 
+      console.log(newData)
   };
 
   useEffect(() => {
+    console.log("token:", token);
+    console.log("Userame:", Username);
+    console.log("userData:", userData);
+
     if (!token) {
       return;
     }
