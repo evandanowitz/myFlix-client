@@ -22,7 +22,28 @@ export const ProfileView = () => {
     console.log("newEmail:", newEmail);
     console.log("newBirthday:", newBirthday);
 
+    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
+      method: "PUT",
+      body: JSON.stringify(newData),
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+
+    }).then((response) => {
       console.log(newData)
+      if (response.ok) {
+        alert("Update successful");
+      } else if (newUsername.length < 6) {
+        alert("Username must be 6 characters or longer.");
+      } else if (newEmail.includes("@") === false) {
+        alert("Please enter a valid email address.")
+      } else {
+        alert("Update failed");
+      }
+    }).catch(error => {
+      console.error("Error: ", error);
+    });
   };
 
   useEffect(() => {
