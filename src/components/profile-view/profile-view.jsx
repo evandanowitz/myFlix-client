@@ -22,6 +22,12 @@ export const ProfileView = () => {
     console.log("newEmail:", newEmail);
     console.log("newBirthday:", newBirthday);
 
+    const newData = {
+      Username: newUsername,
+      Email: newEmail,
+      Birthday: newBirthday
+    };
+
     fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
       method: "PUT",
       body: JSON.stringify(newData),
