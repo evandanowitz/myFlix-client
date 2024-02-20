@@ -10,9 +10,9 @@ export const ProfileView = () => {
   const [userData, setUserData] = useState(null);
   const Username = user ? user.Username : null;
 
-  const [updatedUsername, setUpdatedUsername] = useState("");
-  const [updatedEmail, setUpdatedEmail] = useState("");
-  const [updatedBirthday, setUpdatedBirthday] = useState("");
+  const [newUsername, setNewUsername] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newBirthday, setNewBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,11 +38,11 @@ export const ProfileView = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then((storedData) => {
         setUserData({
-          Username: data.Username,
-          Email: data.Email,
-          Birthday: data.Birthday
+          Username: user.Username,
+          Email: user.Email,
+          Birthday: user.Birthday
         });
       });
   }, [token]);
@@ -64,31 +64,31 @@ export const ProfileView = () => {
 
       <Card>
         <Form>
-          <Form.Group controlId="updatedUsername">
+          <Form.Group controlId="newUsername">
             <Form.Label>New Username:</Form.Label>
               <Form.Control
                 type="text"
-                value={updatedUsername}
-                onChange={(e) => setUpdatedUsername(e.target.value)}
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
                 required
                 minLength="6"
               />
           </Form.Group>
-          <Form.Group controlId="updatedEmail">
+          <Form.Group controlId="newEmail">
             <Form.Label>New Email:</Form.Label>
               <Form.Control
                 type="email"
-                value={updatedEmail}
-                onChange={(e) => setUpdatedEmail(e.target.value)}
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
                 required
               />
           </Form.Group>
-          <Form.Group controlId="updatedBirthday">
+          <Form.Group controlId="newBirthday">
             <Form.Label>New Birthday:</Form.Label>
               <Form.Control
                 type="date"
-                value={updatedBirthday}
-                onChange={(e) => setUpdatedBirthday(e.target.value)}
+                value={newBirthday}
+                onChange={(e) => setNewBirthday(e.target.value)}
                 required
               />
           </Form.Group>
