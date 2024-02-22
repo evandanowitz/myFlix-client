@@ -49,7 +49,7 @@ export const MovieView = ({ movies }) => {
 
 // Define all props constraints for MovieView
 MovieView.propTypes = {
-  movie: PropTypes.shape({
+  movies: PropTypes.shape([{
     Title: PropTypes.string,
     Description: PropTypes.string,
     Genre: {
@@ -64,5 +64,5 @@ MovieView.propTypes = {
     },
     ImagePath: PropTypes.string,
     Featured: PropTypes.boolean
-  }).isRequired
+  }]).isRequired
 };
