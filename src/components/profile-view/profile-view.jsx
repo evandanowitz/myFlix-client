@@ -7,23 +7,25 @@ export const ProfileView = () => {
   const token = localStorage.getItem("token");
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(user ? user : null);
   const Username = user ? user.Username : null;
 
   const [newUsername, setNewUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Handle submit triggered");
-
     console.log("newUsername:", newUsername);
+    console.log("newPassword:", newPassword);
     console.log("newEmail:", newEmail);
     console.log("newBirthday:", newBirthday);
 
     const newData = {
       Username: newUsername,
+      Password: newPassword,
       Email: newEmail,
       Birthday: newBirthday
     };
@@ -40,6 +42,7 @@ export const ProfileView = () => {
       console.log(newData)
       if (response.ok) {
         alert("Update successful");
+        setUserData(newData);
       } else if (newUsername.length < 6) {
         alert("Username must be 6 characters or longer.");
       } else if (newEmail.includes("@") === false) {
@@ -49,6 +52,8 @@ export const ProfileView = () => {
       }
     }).catch(error => {
       console.error("Error: ", error);
+      if (error.response) {
+      }
     });
   };
 
@@ -65,7 +70,7 @@ export const ProfileView = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
-      .then((storedData) => {
+      .then((userData) => {
         setUserData({
           Username: user.Username,
           Email: user.Email,
@@ -101,6 +106,16 @@ export const ProfileView = () => {
                 minLength="6"
               />
           </Form.Group>
+          <Form.Group controlId="newPassword">
+            <Form.Label>New Password:</Form.Label>
+              <Form.Control
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+                minLength="6"
+              />
+          </Form.Group>
           <Form.Group controlId="newEmail">
             <Form.Label>New Email:</Form.Label>
               <Form.Control
@@ -127,8 +142,3 @@ export const ProfileView = () => {
     </Container>
   );
 };
-
-// FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
-  //   };
-  // setMovies(moviesFromApi);
-  // });
