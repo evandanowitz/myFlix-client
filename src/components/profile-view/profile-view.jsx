@@ -15,6 +15,14 @@ export const ProfileView = () => {
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
 
+  const [showUserInfo, setShowUserInfo] = useState(false);
+  const handleShowUserInfo = () => {
+    setShowUserInfo(true);
+  };
+  const handleHideUserInfo = () => {
+    setShowUserInfo(false);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("newData:", newUsername, newPassword, newEmail, newBirthday);
@@ -48,8 +56,6 @@ export const ProfileView = () => {
       }
     }).catch(error => {
       console.error("Error: ", error);
-      if (error.response) {
-      }
     });
   };
 
@@ -76,7 +82,7 @@ export const ProfileView = () => {
       <Card>
         <Card.Body>
           <Card.Title>User Information</Card.Title>
-          {userData && (
+          {showUserInfo && userData && (
             <div>
               <Card.Text>Username: {userData.Username}</Card.Text>
               <Card.Text>Email: {userData.Email}</Card.Text>
@@ -84,6 +90,16 @@ export const ProfileView = () => {
             </div>
           )}
         </Card.Body>
+        {!showUserInfo && (
+          <Button type="button" onClick={handleShowUserInfo} variant="primary">
+            Show User Info
+          </Button>
+        )}
+        {showUserInfo && (
+          <Button type="button" onClick={handleHideUserInfo} variant="primary">
+            Hide User Info
+          </Button>
+        )}
       </Card>
 
       <Card>
