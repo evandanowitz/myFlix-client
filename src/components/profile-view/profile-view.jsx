@@ -20,12 +20,8 @@ export const ProfileView = () => {
   const [newBirthday, setNewBirthday] = useState("");
 
   const [showUserInfo, setShowUserInfo] = useState(false);
-  const handleShowUserInfo = () => {
-    setShowUserInfo(true);
-  };
-  const handleHideUserInfo = () => {
-    setShowUserInfo(false);
-  };
+  const handleShowUserInfo = () => setShowUserInfo(true);
+  const handleHideUserInfo = () => setShowUserInfo(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
