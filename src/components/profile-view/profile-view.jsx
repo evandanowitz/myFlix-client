@@ -47,13 +47,6 @@ export const ProfileView = () => {
       if (response.ok) {
         alert("Update successful");
         setUserData(newData);
-      } else if (newUsername.length < 6) {
-        alert("Username must be 6 characters or longer.");
-      } else if (newEmail.includes("@") === false) {
-        alert("Please enter a valid email address.")
-      } else {
-        alert("Update failed");
-      }
     }).catch(error => {
       console.error("Error: ", error);
     });
