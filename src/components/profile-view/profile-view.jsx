@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Button, Form, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const ProfileView = () => {
+
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
