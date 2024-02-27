@@ -11,12 +11,6 @@ export const ProfileView = () => {
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
   const Username = userData ? userData.Username : null;
 
-  // const token = localStorage.getItem("token");
-  // const storedUser = JSON.parse(localStorage.getItem("user"));
-  // const [user, setUser] = useState(storedUser ? storedUser : null);
-  // const [userData, setUserData] = useState(user ? user : null);
-  // const Username = user ? user.Username : null;
-
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -44,7 +38,6 @@ export const ProfileView = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       }
-
     })
       .then((response) => response.json())
       .then((response) => {
