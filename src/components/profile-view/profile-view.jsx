@@ -39,14 +39,13 @@ export const ProfileView = () => {
         Authorization: `Bearer ${token}`
       }
     })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.Username)
-        {
-          alert("Update successful");
-          setUserData(newData);
-          localStorage.setItem("user", JSON.stringify(response)); // After page updates, also update localStorage
-        }
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.Username) {
+        alert("Update successful");
+        setUserData(newData);
+        localStorage.setItem("user", JSON.stringify(response)); // After page updates, also update localStorage
+      }
     }).catch(error => {
       console.error("Error: ", error);
     });
