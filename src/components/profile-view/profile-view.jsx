@@ -112,6 +112,59 @@ console.log(user, movies);
           <Button type="button" onClick={handleHideUserInfo} variant="primary">
             Hide User Info
           </Button>
+      {/* UPDATE USER INFO CARD */}
+      <Card>
+        <Card.Body>
+          <Card.Title>Update User</Card.Title>
+          {showUpdateForm && (
+          <Form>
+            <Form.Group controlId="newUsername">
+              <Form.Label>New Username:</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  required
+                  minLength="6"
+                />
+            </Form.Group>
+            <Form.Group controlId="newPassword">
+              <Form.Label>New Password:</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                  minLength="6"
+                />
+            </Form.Group>
+            <Form.Group controlId="newEmail">
+              <Form.Label>New Email:</Form.Label>
+                <Form.Control
+                  type="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  required
+                />
+            </Form.Group>
+            <Form.Group controlId="newBirthday">
+              <Form.Label>New Birthday:</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={newBirthday}
+                  onChange={(e) => setNewBirthday(e.target.value)}
+                  required
+                />
+            </Form.Group>
+            <Button type="submit" onClick={handleSubmit} variant="primary" className="mr-auto">Update Info</Button>
+          </Form>
+          )}
+        </Card.Body>
+        {!showUpdateForm && (
+          <Button type="button" onClick={handleShowUpdateForm} variant="primary">Show Update Form</Button>
+        )}
+        {showUpdateForm && (
+          <Button type="button" onClick={handleHideUpdateForm} variant="primary">Hide Update Form</Button>
         )}
       </Card>
 
