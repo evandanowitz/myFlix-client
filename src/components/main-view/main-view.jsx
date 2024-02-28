@@ -77,6 +77,18 @@ export const MainView = () => {
             }
           />
 
+          {/* If no user, return SignupView. If user is logged in, return main page */}
+          <Route 
+            path="/return-signup"
+            element={
+              <>
+                <Col sm={6} md={4}>
+                  <SignupView />
+                </Col>
+              </>
+            }
+          />
+
           {/* If no user, return LoginView. If user is logged in, return main page */}
           <Route
             path="/login"
