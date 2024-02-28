@@ -66,24 +66,30 @@ console.log(user, movies);
     });
   };
 
-  useEffect(() => {
-    if (!token) {
+  // DELETE USER FUNCTION
+  const handleDelete = (event) => {
+    event.preventDefault();
+
+    if (newUsername !== Username) {
+      alert("Incorrect username. Please enter your username to delete your account.")
       return;
     }
 
     fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        setUserData({
-          Username: responseData.Username,
-          Email: responseData.Email,
-          Birthday: responseData.Birthday
-        });
-      });
-  }, [token]);
-
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if (response.ok) {
+        setUserData(null);
+        localStorage.clear();
+        alert("User successfully deleted");
+        navigate("/return-signup");
+      }
+    });
+  };
+  
   return (
     <Container>
       <Card>
