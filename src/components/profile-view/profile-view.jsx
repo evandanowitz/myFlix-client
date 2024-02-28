@@ -109,6 +109,7 @@ console.log(user, movies);
   
   return (
     <Container>
+      {/* DISPLAY USER INFO CARD */}
       <Card>
         <Card.Body>
           <Card.Title>User Information</Card.Title>
@@ -121,14 +122,13 @@ console.log(user, movies);
           )}
         </Card.Body>
         {!showUserInfo && (
-          <Button type="button" onClick={handleShowUserInfo} variant="primary">
-            Show User Info
-          </Button>
+          <Button type="button" onClick={handleShowUserInfo} variant="primary">Show User Info</Button>
         )}
         {showUserInfo && (
-          <Button type="button" onClick={handleHideUserInfo} variant="primary">
-            Hide User Info
-          </Button>
+          <Button type="button" onClick={handleHideUserInfo} variant="primary">Hide User Info</Button>
+        )}
+      </Card>
+
       {/* UPDATE USER INFO CARD */}
       <Card>
         <Card.Body>
