@@ -17,9 +17,23 @@ console.log(user, movies);
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
 
+  // USER INFO CARD VARIABLES
   const [showUserInfo, setShowUserInfo] = useState(false);
   const handleShowUserInfo = () => setShowUserInfo(true);
   const handleHideUserInfo = () => setShowUserInfo(false);
+
+  // UPDATE USER CARD VARIABLES
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const handleShowUpdateForm = () => setShowUpdateForm(true);
+  const handleHideUpdateForm = () => setShowUpdateForm(false);
+
+  // DELETE USER CARD VARIABLES
+  const [showDeleteForm, setShowDeleteForm] = useState(false);
+  const handleShowDeleteForm = () => setShowDeleteForm(true);
+  const handleHideDeleteForm = () => setShowDeleteForm(false);
+
+  // NAVIGATE VARIABLE
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +45,7 @@ console.log(user, movies);
       Email: newEmail,
       Birthday: newBirthday
     };
-
+    
     fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
       method: "PUT",
       body: JSON.stringify(newData),
