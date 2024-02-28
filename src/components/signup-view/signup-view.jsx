@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +30,7 @@ export const SignupView = () => {
       console.log(data)
       if (response.ok) {
         alert("Signup successful");
+        navigate("/login");
       } else if (username.length < 6) {
         alert("Username must be 6 characters or longer.");
       } else if (password === "") {
