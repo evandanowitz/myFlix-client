@@ -52,6 +52,7 @@ console.log(user, movies);
     });
   }, [token]);
 
+  // UPDATE USER FUNCTION
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("newData:", newUsername, newPassword, newEmail, newBirthday);
@@ -70,13 +71,12 @@ console.log(user, movies);
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       }
-    })
-    .then((response) => response.json())
+    }).then((response) => response.json())
     .then((response) => {
       if (response.Username) {
         alert("Update successful");
         setUserData(newData);
-        localStorage.setItem("user", JSON.stringify(response)); // After page updates, also update localStorage
+        localStorage.setItem("user", JSON.stringify(response));
       }
     }).catch(error => {
       console.error("Error: ", error);
