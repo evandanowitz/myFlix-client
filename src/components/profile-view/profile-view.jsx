@@ -3,9 +3,10 @@ import { Container } from "react-bootstrap";
 import { Button, Form, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export const ProfileView = () => {
-
-  const navigate = useNavigate();
+export const ProfileView = ({ user, movies }) => {
+// Now in ProfileView, I have access to the user that MainView has as well as the movies that MainView has. This allows me to not have to go to API or localStorage for anything.
+// Now, ProfileView knows what MainView knows.
+console.log(user, movies);
 
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
