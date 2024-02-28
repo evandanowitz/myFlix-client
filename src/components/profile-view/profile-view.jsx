@@ -35,6 +35,23 @@ console.log(user, movies);
   // NAVIGATE VARIABLE
   const navigate = useNavigate();
 
+  // GET USER DATA FUNCTION
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then((response) => response.json())
+    .then((responseData) => {
+      setUserData({
+        Username: responseData.Username,
+        Email: responseData.Email,
+        Birthday: responseData.Birthday
+      });
+    });
+  }, [token]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("newData:", newUsername, newPassword, newEmail, newBirthday);
