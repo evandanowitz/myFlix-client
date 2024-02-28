@@ -109,48 +109,36 @@ console.log(user, movies);
         )}
       </Card>
 
+      {/* DELETE USER CARD */}
       <Card>
-        <Form>
-          <Form.Group controlId="newUsername">
-            <Form.Label>New Username:</Form.Label>
-              <Form.Control
-                type="text"
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-                required
-                minLength="6"
-              />
-          </Form.Group>
-          <Form.Group controlId="newPassword">
-            <Form.Label>New Password:</Form.Label>
-              <Form.Control
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                required
-                minLength="6"
-              />
-          </Form.Group>
-          <Form.Group controlId="newEmail">
-            <Form.Label>New Email:</Form.Label>
-              <Form.Control
-                type="email"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                required
-              />
-          </Form.Group>
-          <Form.Group controlId="newBirthday">
-            <Form.Label>New Birthday:</Form.Label>
-              <Form.Control
-                type="date"
-                value={newBirthday}
-                onChange={(e) => setNewBirthday(e.target.value)}
-                required
-              />
-          </Form.Group>
-          <Button type="submit" onClick={handleSubmit} variant="primary">Update Info</Button>
-        </Form>
+        <Card.Body>
+          <Card.Title>Delete User</Card.Title>
+          {showDeleteForm && (
+          <Form>
+            <Form.Group controlId="newUsername">
+              <Form.Label>Type Username:</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  required
+                  minLength="6"
+                />
+            </Form.Group>
+            <Button type="submit" onClick={handleDelete} variant="danger" className="ml-auto">Delete User</Button>
+          </Form>
+          )}
+        </Card.Body>
+        {!showDeleteForm && (
+          <Button type="button" onClick={handleShowDeleteForm} variant="primary">
+            Show Delete User Form
+          </Button>
+        )}
+        {showDeleteForm && (
+          <Button type="button" onClick={handleHideDeleteForm} variant="primary">
+            Hide Delete User Form
+          </Button>
+        )}
       </Card>
     </Container>
   );
