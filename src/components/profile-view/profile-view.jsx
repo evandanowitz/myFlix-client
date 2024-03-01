@@ -16,22 +16,18 @@ export const ProfileView = ({ user, movies }) => {
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
 
-  // USER INFO CARD VARIABLES
   const [showUserInfo, setShowUserInfo] = useState(false);
   const handleShowUserInfo = () => setShowUserInfo(true);
   const handleHideUserInfo = () => setShowUserInfo(false);
 
-  // UPDATE USER CARD VARIABLES
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const handleShowUpdateForm = () => setShowUpdateForm(true);
   const handleHideUpdateForm = () => setShowUpdateForm(false);
 
-  // DELETE USER CARD VARIABLES
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const handleShowDeleteForm = () => setShowDeleteForm(true);
   const handleHideDeleteForm = () => setShowDeleteForm(false);
 
-  // NAVIGATE VARIABLE
   const navigate = useNavigate();
 
   // GET USER DATA FUNCTION
@@ -43,6 +39,7 @@ export const ProfileView = ({ user, movies }) => {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => response.json())
     .then((responseData) => {
+      console.log("responseData:", responseData);
       setUserData({
         Username: responseData.Username,
         Email: responseData.Email,
@@ -105,7 +102,7 @@ export const ProfileView = ({ user, movies }) => {
       }
     });
   };
-  
+
   return (
     <Container>
       {/* DISPLAY USER INFO CARD */}
