@@ -9,7 +9,6 @@ export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
 
-  // const user = JSON.parse(localStorage.getItem("user")); // Need this ???
 
   return (
     <>
