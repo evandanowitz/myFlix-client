@@ -29,10 +29,13 @@ export const ProfileView = ({ user, movies }) => {
   const handleShowDeleteForm = () => setShowDeleteForm(true);
   const handleHideDeleteForm = () => setShowDeleteForm(false);
 
+
   const navigate = useNavigate();
+
 
   // GET USER DATA FUNCTION
   useEffect(() => {
+    console.log('user.FavoriteMovies:', user.FavoriteMovies);
     if (!token) {
       return;
     }
