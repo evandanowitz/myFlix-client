@@ -46,7 +46,6 @@ export const MainView = () => {
     });
   }, [token]);
 
-
   return (
     <BrowserRouter>
       <NavigationBar
@@ -119,6 +118,8 @@ export const MainView = () => {
                   <Col md={8}>
                     <MovieView 
                       movies={movies}
+                      Username={user.Username}
+                      user={user}
                     />
                   </Col>
                 )}
