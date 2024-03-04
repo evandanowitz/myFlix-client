@@ -21,30 +21,29 @@ export const MainView = () => {
     }
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const moviesFromApi = data.map((movie) => {
-          return {
-            _id: movie._id,
-            Title: movie.Title,
-            Description: movie.Description,
-            Genre: {
-              Name: movie.Genre.Name,
-              Description: movie.Genre.Description
-            },
-            Director: {
-              Name: movie.Director.Name,
-              Bio: movie.Director.Bio,
-              Birth: movie.Director.Birth,
-              Death: movie.Director.Death
-            },
-            ImagePath: movie.ImagePath,
-            Featured: movie.Featured
-          };
-        });
-        setMovies(moviesFromApi);
+    }).then((response) => response.json())
+    .then((data) => {
+      const moviesFromApi = data.map((movie) => {
+        return {
+          _id: movie._id,
+          Title: movie.Title,
+          Description: movie.Description,
+          Genre: {
+            Name: movie.Genre.Name,
+            Description: movie.Genre.Description
+          },
+          Director: {
+            Name: movie.Director.Name,
+            Bio: movie.Director.Bio,
+            Birth: movie.Director.Birth,
+            Death: movie.Director.Death
+          },
+          ImagePath: movie.ImagePath,
+          Featured: movie.Featured
+        };
       });
+      setMovies(moviesFromApi);
+    });
   }, [token]);
 
 
