@@ -72,4 +72,3 @@ MovieView.propTypes = {
 
 
 
-
