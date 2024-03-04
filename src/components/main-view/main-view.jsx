@@ -19,7 +19,6 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -47,6 +46,7 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, [token]);
+
 
   return (
     <BrowserRouter>
@@ -76,7 +76,6 @@ export const MainView = () => {
               </>
             }
           />
-
           {/* If no user, return SignupView. If user is logged in, return main page */}
           <Route 
             path="/return-signup"
@@ -88,7 +87,6 @@ export const MainView = () => {
               </>
             }
           />
-
           {/* If no user, return LoginView. If user is logged in, return main page */}
           <Route
             path="/login"
@@ -109,7 +107,6 @@ export const MainView = () => {
               </>
             }
           />
-
           {/* If no user, return LoginView. If user is logged in, return MovieView */}
           <Route
             path="movies/:movieId"
@@ -129,7 +126,6 @@ export const MainView = () => {
               </>
             }
           />
-
           {/* If no user, return LoginView. If user is logged in, return ProfileView */}
           <Route
             path="/profile"
@@ -148,7 +144,6 @@ export const MainView = () => {
               </>
             }
           />
-
           {/* If no user, return LoginView. If user is logged in, return MovieCard */}
           <Route 
             path="/"
