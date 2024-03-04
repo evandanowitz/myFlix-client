@@ -65,3 +65,11 @@ MovieView.propTypes = {
     Featured: PropTypes.boolean
   }]).isRequired
 };
+
+
+
+
+
+
+
+
