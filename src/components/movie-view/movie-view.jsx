@@ -47,28 +47,21 @@ export const MovieView = ({ movies }) => {
 };
 
 // Define all props constraints for MovieView
-MovieView.propTypes = {
-  movies: PropTypes.shape([{
-    Title: PropTypes.string,
-    Description: PropTypes.string,
-    Genre: {
-      Name: PropTypes.string,
-      Description: PropTypes.string
-    },
-    Director: {
-      Name: PropTypes.string,
-      Bio: PropTypes.string,
-      Birth: PropTypes.date,
-      Death: PropTypes.date
-    },
-    ImagePath: PropTypes.string,
-    Featured: PropTypes.boolean
-  }]).isRequired
-};
-
-
-
-
-
-
-
+// MovieView.propTypes = {
+//   movies: PropTypes.shape([{
+//     Title: PropTypes.string,
+//     Description: PropTypes.string,
+//     Genre: {
+//       Name: PropTypes.string,
+//       Description: PropTypes.string
+//     },
+//     Director: {
+//       Name: PropTypes.string,
+//       Bio: PropTypes.string,
+//       Birth: PropTypes.date,
+//       Death: PropTypes.date
+//     },
+//     ImagePath: PropTypes.string,
+//     Featured: PropTypes.boolean
+//   }]).isRequired
+// };
