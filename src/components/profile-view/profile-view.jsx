@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, movies }) => {
-// Now in ProfileView, I have access to the user and movies that MainView has. Don't have to go to API or localStorage for anything. Now, ProfileView knows what MainView knows.
-
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
   const Username = userData ? userData.Username : null;
