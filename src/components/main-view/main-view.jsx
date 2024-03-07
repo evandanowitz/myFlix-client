@@ -11,8 +11,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -58,8 +58,6 @@ export const MainView = () => {
       />
       <Row className="justify-content-md-center my-5">
         <Routes>
-
-          {/* If no user, return SignupView. If user is logged in, return main page */}
           <Route 
             path="/signup"
             element={
@@ -72,9 +70,7 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            }
-          />
-          {/* If no user, return SignupView. If user is logged in, return main page */}
+            } />
           <Route 
             path="/return-signup"
             element={
@@ -83,9 +79,7 @@ export const MainView = () => {
                   <SignupView />
                 </Col>
               </>
-            }
-          />
-          {/* If no user, return LoginView. If user is logged in, return main page */}
+            } />
           <Route
             path="/login"
             element={
@@ -103,9 +97,7 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            }
-          />
-          {/* If no user, return LoginView. If user is logged in, return MovieView */}
+            } />
           <Route
             path="movies/:movieId"
             element={
@@ -124,9 +116,7 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            }
-          />
-          {/* If no user, return LoginView. If user is logged in, return ProfileView */}
+            } />
           <Route
             path="/profile"
             element={
@@ -142,9 +132,7 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            }
-          />
-          {/* If no user, return LoginView. If user is logged in, return MovieCard */}
+            } />
           <Route 
             path="/"
             element={
@@ -165,8 +153,7 @@ export const MainView = () => {
                   </>
                 )}
               </>
-            }
-          />
+            } />
         </Routes>
       </Row>
     </BrowserRouter>

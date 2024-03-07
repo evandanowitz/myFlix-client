@@ -27,7 +27,6 @@ export const SignupView = () => {
         "Content-Type": "application/json"
       }
     }).then((response) => {
-      // console.log(data)
       if (response.ok) {
         alert("Signup successful");
         navigate("/login");

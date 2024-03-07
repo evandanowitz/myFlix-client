@@ -32,7 +32,6 @@ export const ProfileView = ({ user, movies }) => {
 
   // GET USER DATA FUNCTION
   useEffect(() => {
-    console.log('user.FavoriteMovies:', user.FavoriteMovies);
     if (!token) {
       return;
     }
@@ -47,10 +46,12 @@ export const ProfileView = ({ user, movies }) => {
       });
     });
   }, [token]);
+
+// Once you save a favorite (either add or update), need to make that same change to localStorage
+
   // UPDATE USER FUNCTION
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("newData:", newUsername, newPassword, newEmail, newBirthday);
 
     const newData = {
       Username: newUsername,
@@ -123,7 +124,6 @@ export const ProfileView = ({ user, movies }) => {
           <Button type="button" onClick={handleHideUserInfo} variant="primary">Hide User Info</Button>
         )}
       </Card>
-
       {/* UPDATE USER INFO CARD */}
       <Card>
         <Card.Body>
@@ -179,7 +179,6 @@ export const ProfileView = ({ user, movies }) => {
           <Button type="button" onClick={handleHideUpdateForm} variant="primary">Hide Update Form</Button>
         )}
       </Card>
-
       {/* DELETE USER CARD */}
       <Card>
         <Card.Body>
