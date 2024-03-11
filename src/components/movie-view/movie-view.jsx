@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies }) => {
- 
+export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
 
