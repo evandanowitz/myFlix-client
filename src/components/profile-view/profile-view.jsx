@@ -37,16 +37,19 @@ export const ProfileView = ({ user, movies }) => {
     if (!token) {
       return;
     }
-    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    }).then((response) => response.json())
-    .then((responseData) => {
-      setUserData({
-        Username: responseData.Username,
-        Email: responseData.Email,
-        Birthday: responseData.Birthday
+    if (!user) {
+      fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then((response) => response.json())
+      .then((responseData) => {
+        setUserData({
+          Username: responseData.Username,
+          Email: responseData.Email,
+          Birthday: responseData.Birthday,
+          FavoriteMovies: responseData.FavoriteMovies
+        });
       });
-    });
+    }
   }, [token]);
 
   // UPDATE USER FUNCTION
