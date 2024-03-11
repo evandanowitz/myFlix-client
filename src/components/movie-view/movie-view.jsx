@@ -9,6 +9,15 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (user && user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [user, movie]);
 
   const addToFavorites = (event) => {
     event.preventDefault();
