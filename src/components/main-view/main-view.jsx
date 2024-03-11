@@ -132,7 +132,7 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            } />
+            } />    
           <Route 
             path="/"
             element={
