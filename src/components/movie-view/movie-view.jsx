@@ -11,6 +11,43 @@ export const MovieView = ({ movies }) => {
   const movie = movies.find((movie) => movie._id === movieId);
 
 
+  const addToFavorites = (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    if (!movie || !Username) {
+      console.error("Selected movie or Username not found", movie, Username, user);
+      return;
+    }
+    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}/movies/${movie._id}`, {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+        if (!response) {
+          console.error("No response received");
+          return;
+        }
+        if (!response.ok) {
+          console.error(`HTTP error! Status: ${response.status}`);
+          return;
+        }
+        return response.json();
+      }).then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setIsFavorite(true); // Update the state after a successful API response
+        if (data && data.Username) {
+          onFavMoviesChange();
+          // userCallback(); // Pass the updated user data to the parent component
+          alert("Movie ADDED to Favorites List");
+        }
+      }).catch((error) => {
+      console.error("Error adding movie to favorites:", error);
+    })
+  };
+
+
   return (
     <>
       <Row className="my-3 justify-content-md-center">
