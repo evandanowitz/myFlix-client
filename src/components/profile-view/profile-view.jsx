@@ -34,6 +34,7 @@ export const ProfileView = ({ user, movies }) => {
 
   const navigate = useNavigate();
 
+  const favMovies = user.FavoriteMovies ? movies.filter(m => user.FavoriteMovies.includes(m._id)) : [];
 
   // GET USER DATA FUNCTION
   useEffect(() => {
