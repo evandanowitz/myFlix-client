@@ -28,6 +28,9 @@ export const ProfileView = ({ user, movies }) => {
   const handleShowDeleteForm = () => setShowDeleteForm(true);
   const handleHideDeleteForm = () => setShowDeleteForm(false);
 
+  const [showFavoriteMovies, setShowFavoriteMovies] = useState(false);
+  const handleShowFavoriteMovies = () => setShowFavoriteMovies(true);
+  const handleHideFavoriteMovies = () => setShowFavoriteMovies(false);
 
   const navigate = useNavigate();
 
