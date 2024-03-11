@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Button, Form, Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, movies }) => {
+
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
   const Username = userData ? userData.Username : null;
@@ -46,8 +48,6 @@ export const ProfileView = ({ user, movies }) => {
       });
     });
   }, [token]);
-
-// Once you save a favorite (either add or update), need to make that same change to localStorage
 
   // UPDATE USER FUNCTION
   const handleSubmit = (event) => {
@@ -177,6 +177,29 @@ export const ProfileView = ({ user, movies }) => {
         )}
         {showUpdateForm && (
           <Button type="button" onClick={handleHideUpdateForm} variant="primary">Hide Update Form</Button>
+        )}
+      </Card>
+      {/* DISPLAY USER'S FAVORITE MOVIES LIST */}
+      <Card>
+        <Card.Body>
+          <Row>
+            <Card.Title>My Favorite Movies</Card.Title>
+            {showFavoriteMovies && favMovies.map((movie) => (
+            <Col sm={12} md={6}>
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                Username={Username}
+              />
+            </Col>
+            ))}
+          </Row>
+        </Card.Body>
+        {!showFavoriteMovies && (
+          <Button type="button" onClick={handleShowFavoriteMovies} variant="primary">Show Favorites</Button>
+        )}
+        {showFavoriteMovies && (
+          <Button type="button" onClick={handleHideFavoriteMovies} variant="primary">Hide Favorites</Button>
         )}
       </Card>
       {/* DELETE USER CARD */}
