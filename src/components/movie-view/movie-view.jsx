@@ -41,6 +41,11 @@ export const MovieView = ({ movies }) => {
             <Link to={`/`}>
               <Button className="my-1" style={{ cursor: "pointer" }}>Back</Button>
             </Link>
+            { isFavorite ? 
+              <Button variant="primary" className="mt-auto" onClick={rmvFromFavorites}>Remove from Favorites</Button>
+            :
+              <Button variant="primary" className="mt-auto" onClick={addToFavorites}>Add to Favorites</Button>
+            }
           </Col>
       </Row>
     </>
