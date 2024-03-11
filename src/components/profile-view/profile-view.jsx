@@ -8,8 +8,8 @@ import { MovieCard } from "../movie-card/movie-card";
 export const ProfileView = ({ user, movies }) => {
 
   const token = localStorage.getItem("token");
-  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")) || null);
-  const Username = userData ? userData.Username : null;
+  const [userData, setUserData] = useState(user);
+  const Username = user ? user.Username : null;
 
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
