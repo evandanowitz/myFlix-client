@@ -82,7 +82,6 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
         localStorage.setItem("user", JSON.stringify(data));
         setIsFavorite(false); // Update the state after a successful API response
         if (data && data.Username) {
-          onFavMoviesChange();
           alert("Movie REMOVED from Favorites List");
           // userCallback(data); // Pass the updated user data to the parent component
         }
