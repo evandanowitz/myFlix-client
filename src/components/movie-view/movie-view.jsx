@@ -46,8 +46,6 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
         localStorage.setItem("user", JSON.stringify(data));
         setIsFavorite(true); // Update the state after a successful API response
         if (data && data.Username) {
-          onFavMoviesChange();
-          // userCallback(); // Pass the updated user data to the parent component
           alert("Movie ADDED to Favorites List");
         }
       }).catch((error) => {
@@ -83,7 +81,6 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
         setIsFavorite(false); // Update the state after a successful API response
         if (data && data.Username) {
           alert("Movie REMOVED from Favorites List");
-          // userCallback(data); // Pass the updated user data to the parent component
         }
       }).catch((error) => {
       console.error("Error adding movie to favorites:", error);
