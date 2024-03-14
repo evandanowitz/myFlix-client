@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
+export const MovieView = ({ movies, Username, user, updateUser }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
 
@@ -47,6 +47,7 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
         setIsFavorite(true); // Update the state after a successful API response
         if (data && data.Username) {
           alert("Movie ADDED to Favorites List");
+          updateUser(data);
         }
       }).catch((error) => {
       console.error("Error adding movie to favorites:", error);
@@ -81,6 +82,7 @@ export const MovieView = ({ movies, Username, user, onFavMoviesChange }) => {
         setIsFavorite(false); // Update the state after a successful API response
         if (data && data.Username) {
           alert("Movie REMOVED from Favorites List");
+          updateUser(data);
         }
       }).catch((error) => {
       console.error("Error adding movie to favorites:", error);

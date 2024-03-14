@@ -46,6 +46,11 @@ export const MainView = () => {
     });
   }, [token]);
 
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -112,6 +117,7 @@ export const MainView = () => {
                       movies={movies}
                       Username={user.Username}
                       user={user}
+                      updateUser={updateUser}
                     />
                   </Col>
                 )}
@@ -128,6 +134,7 @@ export const MainView = () => {
                     <ProfileView
                       user={user}
                       movies={movies}
+                      updateUser={updateUser}
                     />
                   </Col>
                 )}
