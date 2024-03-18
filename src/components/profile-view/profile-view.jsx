@@ -1,37 +1,28 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { Button, Form, Card } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
+import { Container, Button, Form, Card, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, movies }) => {
-
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(user);
   const Username = user ? user.Username : null;
-
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
-
   const [showUserInfo, setShowUserInfo] = useState(false);
   const handleShowUserInfo = () => setShowUserInfo(true);
   const handleHideUserInfo = () => setShowUserInfo(false);
-
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const handleShowUpdateForm = () => setShowUpdateForm(true);
   const handleHideUpdateForm = () => setShowUpdateForm(false);
-
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const handleShowDeleteForm = () => setShowDeleteForm(true);
   const handleHideDeleteForm = () => setShowDeleteForm(false);
-
   const [showFavoriteMovies, setShowFavoriteMovies] = useState(false);
   const handleShowFavoriteMovies = () => setShowFavoriteMovies(true);
   const handleHideFavoriteMovies = () => setShowFavoriteMovies(false);
-
   const navigate = useNavigate();
 
   const favMovies = user.FavoriteMovies ? movies.filter(m => user.FavoriteMovies.includes(m._id)) : [];
