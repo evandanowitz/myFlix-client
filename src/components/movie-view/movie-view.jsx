@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./movie-view.scss";
 
 export const MovieView = ({ movies, Username, user, updateUser }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
+  const navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -115,6 +117,7 @@ export const MovieView = ({ movies, Username, user, updateUser }) => {
               <span className="h6">Featured: </span>
               <span>{movie.Featured ? "Yes" : "No"}</span>
             </div>
+            <Button className="my-1" style={{ cursor: "pointer" }} onClick={() => navigate(-1)}>Back</Button>
             { isFavorite ? 
               <Button variant="primary" className="mt-auto" onClick={rmvFromFavorites}>Remove from Favorites</Button>
             :
