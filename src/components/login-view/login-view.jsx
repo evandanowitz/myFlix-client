@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -16,11 +17,12 @@ export const LoginView = ({ onLoggedIn }) => {
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json" // WHAT IS THIS?
       },
       body: JSON.stringify(data)
     }).then((response) => response.json())
       .then((data) => {
+        console.log("Login response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
@@ -57,7 +59,9 @@ export const LoginView = ({ onLoggedIn }) => {
           minLength="6"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">Login</Button>
+      <Button variant="primary" type="submit">
+        Login
+      </Button>
     </Form>
   );
 };

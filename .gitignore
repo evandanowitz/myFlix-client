@@ -2,5 +2,7 @@ node_modules
 .cache
 .parcel-cache
 dist
-.parcel-cache/d0d4aa4a0c5416be-AssetGraph-0
-.parcel-cache/d0d4aa4a0c5416be-AssetGraph-0
+dist/index.b4b6dfad.js.map
+1ae3e25cb2d1b4bbae410ad23e65dbf818709bfc
+dist/index.html
+dist/index.b4b6dfad.js
