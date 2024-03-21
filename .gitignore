@@ -2,3 +2,4 @@ node_modules
 .cache
 .parcel-cache
 dist
+.parcel-cache/d0d4aa4a0c5416be-AssetGraph-0
