@@ -4,25 +4,28 @@ import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, movies }) => {
+  
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(user);
   const Username = user ? user.Username : null;
+  
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
+
   const [showUserInfo, setShowUserInfo] = useState(false);
-  const handleShowUserInfo = () => setShowUserInfo(true);
-  const handleHideUserInfo = () => setShowUserInfo(false);
+  const toggleShowUserInfo = () => setShowUserInfo(!showUserInfo);
+  
   const [showUpdateForm, setShowUpdateForm] = useState(false);
-  const handleShowUpdateForm = () => setShowUpdateForm(true);
-  const handleHideUpdateForm = () => setShowUpdateForm(false);
-  const [showDeleteForm, setShowDeleteForm] = useState(false);
-  const handleShowDeleteForm = () => setShowDeleteForm(true);
-  const handleHideDeleteForm = () => setShowDeleteForm(false);
+  const toggleShowUpdateForm = () => setShowUpdateForm(!showUpdateForm);
+  
   const [showFavoriteMovies, setShowFavoriteMovies] = useState(false);
-  const handleShowFavoriteMovies = () => setShowFavoriteMovies(true);
-  const handleHideFavoriteMovies = () => setShowFavoriteMovies(false);
+  const toggleShowFavoriteMovies = () => setShowFavoriteMovies(!showFavoriteMovies);
+
+  const [showDeleteForm, setShowDeleteForm] = useState(false);
+  const toggleShowDeleteForm = () => setShowDeleteForm(!showDeleteForm);
+  
   const navigate = useNavigate();
 
   const favMovies = user.FavoriteMovies ? movies.filter(m => user.FavoriteMovies.includes(m._id)) : [];
@@ -115,12 +118,7 @@ export const ProfileView = ({ user, movies }) => {
             </div>
           )}
         </Card.Body>
-        {!showUserInfo && (
-          <Button type="button" onClick={handleShowUserInfo} variant="primary">Show User Info</Button>
-        )}
-        {showUserInfo && (
-          <Button type="button" onClick={handleHideUserInfo} variant="primary">Hide User Info</Button>
-        )}
+        <Button type="button" variant="primary" onClick={toggleShowUserInfo}>{showUserInfo ? "Hide User Info" : "Show User Info"}</Button>
       </Card>
       {/* UPDATE USER INFO CARD */}
       <Card>
@@ -170,12 +168,7 @@ export const ProfileView = ({ user, movies }) => {
           </Form>
           )}
         </Card.Body>
-        {!showUpdateForm && (
-          <Button type="button" onClick={handleShowUpdateForm} variant="primary">Show Update Form</Button>
-        )}
-        {showUpdateForm && (
-          <Button type="button" onClick={handleHideUpdateForm} variant="primary">Hide Update Form</Button>
-        )}
+        <Button type="button" variant="primary" onClick={toggleShowUpdateForm}>{showUpdateForm ? "Hide Update Form" : "Show Update Form"}</Button>
       </Card>
       {/* DISPLAY USER'S FAVORITE MOVIES LIST */}
       <Card>
@@ -191,12 +184,7 @@ export const ProfileView = ({ user, movies }) => {
             ))}
           </Row>
         </Card.Body>
-        {!showFavoriteMovies && (
-          <Button type="button" onClick={handleShowFavoriteMovies} variant="primary">Show Favorites</Button>
-        )}
-        {showFavoriteMovies && (
-          <Button type="button" onClick={handleHideFavoriteMovies} variant="primary">Hide Favorites</Button>
-        )}
+        <Button type="button" variant="primary" onClick={toggleShowFavoriteMovies}>{showFavoriteMovies ? "Hide Favorites" : "Show Favorites"}</Button>
       </Card>
       {/* DELETE USER CARD */}
       <Card>
@@ -218,16 +206,7 @@ export const ProfileView = ({ user, movies }) => {
           </Form>
           )}
         </Card.Body>
-        {!showDeleteForm && (
-          <Button type="button" onClick={handleShowDeleteForm} variant="primary">
-            Show Delete User Form
-          </Button>
-        )}
-        {showDeleteForm && (
-          <Button type="button" onClick={handleHideDeleteForm} variant="primary">
-            Hide Delete User Form
-          </Button>
-        )}
+        <Button type="button" variant="primary" onClick={toggleShowDeleteForm}>{showDeleteForm ? "Hide Delete User Form" : "Show Delete User Form"}</Button>
       </Card>
     </Container>
   );
