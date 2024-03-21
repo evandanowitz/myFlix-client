@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
-
-  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,22 +23,14 @@ export const SignupView = () => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
-      }
+      },
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        navigate("/login");
-      } else if (username.length < 6) {
-        alert("Username must be 6 characters or longer.");
-      } else if (password === "") {
-        alert("You must enter a password.");
-      } else if (email.includes("@") === false) {
-        alert("Please enter a valid email address.")
+        window.location.reload();
       } else {
         alert("Signup failed");
       }
-    }).catch(error => {
-      console.error("Error: ", error);
     });
   };
 
