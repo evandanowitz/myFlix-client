@@ -5,7 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -14,11 +14,11 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [searchBar, setSearchBar] = useState("");
 
   useEffect(() => {
-    if (!token) {
-      return;
-    }
+    if (!token) return;
+
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     }).then((response) => response.json())
@@ -61,6 +61,13 @@ export const MainView = () => {
           localStorage.removeItem("user");
         }}
       />
+      <Form className="my-4">
+        <Form.Control
+          value={searchBar}
+          onChange={(e) => setSearchBar(e.target.value)}
+          placeholder="Search for movies..."
+        />
+      </Form>
       <Row className="justify-content-md-center my-5">
         <Routes>
           <Route 
@@ -150,11 +157,18 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-3" key={movie._id} sm={12} md={6} lg={4} xl={3} xxl={2}>
-                        <MovieCard movie={movie} />
-                      </Col>
-                    ))}
+                    {movies
+                      .filter((movie) => {
+                        return searchBar.toLowerCase() === "" 
+                        ? movie 
+                        : movie.Title.toLowerCase().includes(searchBar);
+                      })
+                      .map((movie) => (
+                        <Col className="mb-3" key={movie._id} sm={12} md={6} lg={4} xl={3} xxl={2}>
+                          <MovieCard movie={movie} />
+                        </Col>
+                      ))
+                    }
                   </>
                 )}
               </>
