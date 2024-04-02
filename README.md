@@ -1,4 +1,4 @@
-# myFlixDB
+# myFlix
 
 ## Description
 
@@ -15,7 +15,7 @@
 
 ## Access the Hosted Site
 
-- Click [here](https://myflixdbapp.netlify.app/) to visit the application online.
+Click [here](https://myflixdbapp.netlify.app/) to visit the application online.
 
 ## Testing Locally with Parcel
 
@@ -67,9 +67,7 @@
 
 ## Server-Side (backend) API
 
-- myFlix interacts with a custom API that can be accessed at the following link: [myFlix API](https://github.com/evandanowitz/movie_api.git)
-- The API contains all data relevant to the myFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more.
-- Please refer to the API Documentation above for information on API endpoints and data formats.
+myFlix interacts with [myFlix API](https://github.com/evandanowitz/movie_api.git), a custom API that contains all data relevant to the myFlix app, including information about movies, titles, descriptions, genres, directors, images, features, users, and more. Please refer to the API Documentation above for information on API endpoints and data formats.
 
 ## Components
 
