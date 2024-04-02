@@ -7,9 +7,11 @@ import "./index.scss";
 
 const MyFlixApp = () => {
   return (
-    <Container>
-      <MainView />
-    </Container>
+    <div style={{ backgroundColor: "beige" }}>
+      <Container>
+        <MainView />
+      </Container>
+    </div>
   );
 };
 
