@@ -20,9 +20,12 @@ export const NavigationBar = ({ user, onLoggedOut, searchBar, setSearchBar, hand
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link as={Link} to="/" onClick={handleSearchBarReset}>Home</Nav.Link>
+                <Nav.Link as={Link} to="/profile" onClick={handleSearchBarReset}>Profile</Nav.Link>
+                <Nav.Link onClick={() => {
+                  onLoggedOut();
+                  handleSearchBarReset();
+                }}>Logout</Nav.Link>
                 <Form className="my-4">
                   <Form.Control
                     value={searchBar}
