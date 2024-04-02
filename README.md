@@ -19,9 +19,7 @@ Click [here](https://myflixdbapp.netlify.app/) to visit the application online.
 
 ## Testing Locally with Parcel
 
-**Step 1.** Clone the project repository in GitHub:
-
-- [Project Repository](https://github.com/evandanowitz/myFlix-client.git)
+**Step 1.** Clone the [project repository](https://github.com/evandanowitz/myFlix-client.git) in GitHub:
 
 **Step 2.** In your CLI, run the following command to navigate to the project directory:
 
