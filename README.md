@@ -29,7 +29,7 @@ Step 2. In your CLI, run the following command to navigate to the project direct
 
 Step 3. Ensure that Parcel is installed globally by running the following command in your CLI:
 
-- npm install -g parcel
+- `npm install -g parcel`
 
 Step 4. Run the following command in your CLI to start the development server:
 
