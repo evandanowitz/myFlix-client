@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const ProfileView = ({ user, movies }) => {
-  
   const token = localStorage.getItem("token");
   const [userData, setUserData] = useState(user);
   const Username = user ? user.Username : null;
-  
+
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -16,19 +15,22 @@ export const ProfileView = ({ user, movies }) => {
 
   const [showUserInfo, setShowUserInfo] = useState(false);
   const toggleShowUserInfo = () => setShowUserInfo(!showUserInfo);
-  
+
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const toggleShowUpdateForm = () => setShowUpdateForm(!showUpdateForm);
-  
+
   const [showFavoriteMovies, setShowFavoriteMovies] = useState(false);
-  const toggleShowFavoriteMovies = () => setShowFavoriteMovies(!showFavoriteMovies);
+  const toggleShowFavoriteMovies = () =>
+    setShowFavoriteMovies(!showFavoriteMovies);
 
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const toggleShowDeleteForm = () => setShowDeleteForm(!showDeleteForm);
-  
+
   const navigate = useNavigate();
 
-  const favMovies = user.FavoriteMovies ? movies.filter(m => user.FavoriteMovies.includes(m._id)) : [];
+  const favMovies = user.FavoriteMovies
+    ? movies.filter((m) => user.FavoriteMovies.includes(m._id))
+    : [];
 
   // GET USER DATA FUNCTION
   useEffect(() => {
@@ -36,17 +38,21 @@ export const ProfileView = ({ user, movies }) => {
       return;
     }
     if (!user) {
-      fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      }).then((response) => response.json())
-      .then((responseData) => {
-        setUserData({
-          Username: responseData.Username,
-          Email: responseData.Email,
-          Birthday: responseData.Birthday,
-          FavoriteMovies: responseData.FavoriteMovies
+      fetch(
+        `https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+        .then((response) => response.json())
+        .then((responseData) => {
+          setUserData({
+            Username: responseData.Username,
+            Email: responseData.Email,
+            Birthday: responseData.Birthday,
+            FavoriteMovies: responseData.FavoriteMovies,
+          });
         });
-      });
     }
   }, [token]);
 
@@ -58,26 +64,31 @@ export const ProfileView = ({ user, movies }) => {
       Username: newUsername,
       Password: newPassword,
       Email: newEmail,
-      Birthday: newBirthday
+      Birthday: newBirthday,
     };
-    
-    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
-      method: "PUT",
-      body: JSON.stringify(newData),
-      headers: { 
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+
+    fetch(
+      `https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(newData),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
-    }).then((response) => response.json())
-    .then((response) => {
-      if (response.Username) {
-        alert("Update successful");
-        setUserData(newData);
-        localStorage.setItem("user", JSON.stringify(response));
-      }
-    }).catch(error => {
-      console.error("Error: ", error);
-    });
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.Username) {
+          alert("Update successful");
+          setUserData(newData);
+          localStorage.setItem("user", JSON.stringify(response));
+        }
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
   };
 
   // DELETE USER FUNCTION
@@ -85,16 +96,21 @@ export const ProfileView = ({ user, movies }) => {
     event.preventDefault();
 
     if (newUsername !== Username) {
-      alert("Incorrect username. Please enter your username to delete your account.")
+      alert(
+        "Incorrect username. Please enter your username to delete your account."
+      );
       return;
     }
 
-    fetch(`https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`
+    fetch(
+      `https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users/${Username}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-    }).then((response) => {
+    ).then((response) => {
       if (response.ok) {
         setUserData(null);
         localStorage.clear();
@@ -118,16 +134,18 @@ export const ProfileView = ({ user, movies }) => {
             </div>
           )}
         </Card.Body>
-        <Button type="button" variant="primary" onClick={toggleShowUserInfo}>{showUserInfo ? "Hide User Info" : "Show User Info"}</Button>
+        <Button type="button" variant="primary" onClick={toggleShowUserInfo}>
+          {showUserInfo ? "Hide User Info" : "Show User Info"}
+        </Button>
       </Card>
       {/* UPDATE USER INFO CARD */}
       <Card>
         <Card.Body>
           <Card.Title>Update User</Card.Title>
           {showUpdateForm && (
-          <Form>
-            <Form.Group controlId="newUsername">
-              <Form.Label>New Username:</Form.Label>
+            <Form>
+              <Form.Group controlId="newUsername">
+                <Form.Label>New Username:</Form.Label>
                 <Form.Control
                   type="text"
                   value={newUsername}
@@ -135,9 +153,9 @@ export const ProfileView = ({ user, movies }) => {
                   required
                   minLength="6"
                 />
-            </Form.Group>
-            <Form.Group controlId="newPassword">
-              <Form.Label>New Password:</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="newPassword">
+                <Form.Label>New Password:</Form.Label>
                 <Form.Control
                   type="password"
                   value={newPassword}
@@ -145,55 +163,69 @@ export const ProfileView = ({ user, movies }) => {
                   required
                   minLength="6"
                 />
-            </Form.Group>
-            <Form.Group controlId="newEmail">
-              <Form.Label>New Email:</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="newEmail">
+                <Form.Label>New Email:</Form.Label>
                 <Form.Control
                   type="email"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                   required
                 />
-            </Form.Group>
-            <Form.Group controlId="newBirthday">
-              <Form.Label>New Birthday:</Form.Label>
+              </Form.Group>
+              <Form.Group controlId="newBirthday">
+                <Form.Label>New Birthday:</Form.Label>
                 <Form.Control
                   type="date"
                   value={newBirthday}
                   onChange={(e) => setNewBirthday(e.target.value)}
                   required
                 />
-            </Form.Group>
-            <Button type="submit" onClick={handleSubmit} variant="primary" className="mr-auto">Update Info</Button>
-          </Form>
+              </Form.Group>
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                variant="primary"
+                className="mr-auto"
+              >
+                Update Info
+              </Button>
+            </Form>
           )}
         </Card.Body>
-        <Button type="button" variant="primary" onClick={toggleShowUpdateForm}>{showUpdateForm ? "Hide Update Form" : "Show Update Form"}</Button>
+        <Button type="button" variant="primary" onClick={toggleShowUpdateForm}>
+          {showUpdateForm ? "Hide Update Form" : "Show Update Form"}
+        </Button>
       </Card>
       {/* DISPLAY USER'S FAVORITE MOVIES LIST */}
       <Card>
         <Card.Body>
           <Row>
             <Card.Title>My Favorite Movies</Card.Title>
-            {showFavoriteMovies && favMovies.map((movie) => (
-            <Col key={movie._id} sm={12} md={6}>
-              <MovieCard
-                movie={movie}
-              />
-            </Col>
-            ))}
+            {showFavoriteMovies &&
+              favMovies.map((movie) => (
+                <Col key={movie._id} sm={12} md={6}>
+                  <MovieCard movie={movie} />
+                </Col>
+              ))}
           </Row>
         </Card.Body>
-        <Button type="button" variant="primary" onClick={toggleShowFavoriteMovies}>{showFavoriteMovies ? "Hide Favorites" : "Show Favorites"}</Button>
+        <Button
+          type="button"
+          variant="primary"
+          onClick={toggleShowFavoriteMovies}
+        >
+          {showFavoriteMovies ? "Hide Favorites" : "Show Favorites"}
+        </Button>
       </Card>
       {/* DELETE USER CARD */}
       <Card>
         <Card.Body>
           <Card.Title>Delete User</Card.Title>
           {showDeleteForm && (
-          <Form>
-            <Form.Group controlId="newUsername">
-              <Form.Label>Type Username:</Form.Label>
+            <Form>
+              <Form.Group controlId="newUsername">
+                <Form.Label>Type Username:</Form.Label>
                 <Form.Control
                   type="text"
                   value={newUsername}
@@ -201,12 +233,21 @@ export const ProfileView = ({ user, movies }) => {
                   required
                   minLength="6"
                 />
-            </Form.Group>
-            <Button type="submit" onClick={handleDelete} variant="danger" className="ml-auto">Delete User</Button>
-          </Form>
+              </Form.Group>
+              <Button
+                type="submit"
+                onClick={handleDelete}
+                variant="danger"
+                className="ml-auto"
+              >
+                Delete User
+              </Button>
+            </Form>
           )}
         </Card.Body>
-        <Button type="button" variant="primary" onClick={toggleShowDeleteForm}>{showDeleteForm ? "Hide Delete User Form" : "Show Delete User Form"}</Button>
+        <Button type="button" variant="primary" onClick={toggleShowDeleteForm}>
+          {showDeleteForm ? "Hide Delete User Form" : "Show Delete User Form"}
+        </Button>
       </Card>
     </Container>
   );

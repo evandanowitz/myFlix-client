@@ -21,29 +21,30 @@ export const MainView = () => {
 
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
-    }).then((response) => response.json())
-    .then((data) => {
-      const moviesFromApi = data.map((movie) => {
-        return {
-          _id: movie._id,
-          Title: movie.Title,
-          Description: movie.Description,
-          Genre: {
-            Name: movie.Genre.Name,
-            Description: movie.Genre.Description
-          },
-          Director: {
-            Name: movie.Director.Name,
-            Bio: movie.Director.Bio,
-            Birth: movie.Director.Birth,
-            Death: movie.Director.Death
-          },
-          ImagePath: movie.ImagePath,
-          Featured: movie.Featured
-        };
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+          return {
+            _id: movie._id,
+            Title: movie.Title,
+            Description: movie.Description,
+            Genre: {
+              Name: movie.Genre.Name,
+              Description: movie.Genre.Description,
+            },
+            Director: {
+              Name: movie.Director.Name,
+              Bio: movie.Director.Bio,
+              Birth: movie.Director.Birth,
+              Death: movie.Director.Death,
+            },
+            ImagePath: movie.ImagePath,
+            Featured: movie.Featured,
+          };
+        });
+        setMovies(moviesFromApi);
       });
-      setMovies(moviesFromApi);
-    });
   }, [token]);
 
   const updateUser = (updatedUser) => {
@@ -53,10 +54,12 @@ export const MainView = () => {
 
   const handleSearchBarReset = () => {
     setSearchBar("");
-  }
+  };
 
-  const filteredMovies = movies.filter(movie =>
-    searchBar.trim() === "" || movie.Title.toLowerCase().includes(searchBar.toLowerCase())
+  const filteredMovies = movies.filter(
+    (movie) =>
+      searchBar.trim() === "" ||
+      movie.Title.toLowerCase().includes(searchBar.toLowerCase())
   );
 
   return (
@@ -74,7 +77,7 @@ export const MainView = () => {
       />
       <Row className="justify-content-md-center my-5">
         <Routes>
-          <Route 
+          <Route
             path="/signup"
             element={
               <>
@@ -86,8 +89,9 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            } />
-          <Route 
+            }
+          />
+          <Route
             path="/return-signup"
             element={
               <>
@@ -95,7 +99,8 @@ export const MainView = () => {
                   <SignupView />
                 </Col>
               </>
-            } />
+            }
+          />
           <Route
             path="/login"
             element={
@@ -104,7 +109,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col sm={6} md={4}>
-                    <LoginView 
+                    <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
@@ -113,7 +118,8 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            } />
+            }
+          />
           <Route
             path="movies/:movieId"
             element={
@@ -124,7 +130,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView 
+                    <MovieView
                       movies={movies}
                       Username={user.Username}
                       user={user}
@@ -133,7 +139,8 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            } />
+            }
+          />
           <Route
             path="/profile"
             element={
@@ -150,8 +157,9 @@ export const MainView = () => {
                   </Col>
                 )}
               </>
-            } />    
-          <Route 
+            }
+          />
+          <Route
             path="/"
             element={
               <>
@@ -162,16 +170,23 @@ export const MainView = () => {
                 ) : (
                   <>
                     {filteredMovies.map((movie) => (
-                      <Col className="mb-3" key={movie._id} sm={12} md={6} lg={4} xl={3} xxl={2}>
-                        <MovieCard 
-                          movie={movie} 
-                        />
+                      <Col
+                        className="mb-3"
+                        key={movie._id}
+                        sm={12}
+                        md={6}
+                        lg={4}
+                        xl={3}
+                        xxl={2}
+                      >
+                        <MovieCard movie={movie} />
                       </Col>
                     ))}
                   </>
                 )}
               </>
-            } />
+            }
+          />
         </Routes>
       </Row>
     </BrowserRouter>

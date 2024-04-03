@@ -4,22 +4,23 @@ import { Button, Form } from "react-bootstrap";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
       Username: username,
-      Password: password
+      Password: password,
     };
 
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
-    }).then((response) => response.json())
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
       .then((data) => {
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
@@ -31,8 +32,7 @@ export const LoginView = ({ onLoggedIn }) => {
       })
       .catch((e) => {
         alert("Something went wrong");
-      }
-    );
+      });
   };
 
   return (
@@ -57,7 +57,9 @@ export const LoginView = ({ onLoggedIn }) => {
           minLength="6"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">Login</Button>
+      <Button variant="primary" type="submit">
+        Login
+      </Button>
     </Form>
   );
 };

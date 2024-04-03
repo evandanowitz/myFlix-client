@@ -17,31 +17,33 @@ export const SignupView = () => {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday
+      Birthday: birthday,
     };
 
     fetch("https://myflix-db-movie-app-af5513e7733f.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Signup successful");
-        navigate("/login");
-      } else if (username.length < 6) {
-        alert("Username must be 6 characters or longer.");
-      } else if (password === "") {
-        alert("You must enter a password.");
-      } else if (email.includes("@") === false) {
-        alert("Please enter a valid email address.")
-      } else {
-        alert("Signup failed");
-      }
-    }).catch(error => {
-      console.error("Error: ", error);
-    });
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Signup successful");
+          navigate("/login");
+        } else if (username.length < 6) {
+          alert("Username must be 6 characters or longer.");
+        } else if (password === "") {
+          alert("You must enter a password.");
+        } else if (email.includes("@") === false) {
+          alert("Please enter a valid email address.");
+        } else {
+          alert("Signup failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
   };
 
   return (
